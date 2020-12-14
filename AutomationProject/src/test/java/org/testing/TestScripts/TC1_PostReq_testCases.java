@@ -2,26 +2,32 @@ package org.testing.TestScripts;
 
 import java.io.IOException;
 import java.util.Properties;
+import java.util.Random;
 
-import org.json.JSONObject;
 import org.testing.TestSteps.HTTPMethods;
+import org.testing.utilities.JsonReplacement;
+import org.testing.utilities.LoadJsonPayload;
 import org.testing.utilities.LoadProperties;
+import org.testing.utilities.ParsingJsonUsingJsonPath;
 
+import com.jayway.restassured.response.Response;
+
+// Post request-----> body -------->from a json file
 public class TC1_PostReq_testCases {
+	
+	static String idValue;
 
-	public static void main(String[] args) throws IOException {
-		String FilePath ="../AutomationProject/URI.properties";
-		Properties p = LoadProperties.properties(FilePath);
-		JSONObject obj = new JSONObject();
-		obj.put("FirstName", "Himanshu");
-		obj.put("LastName", "Mishra");
-		obj.put("id", "4243");
-		obj.put("Dept", "IT");
-		obj.put("Age", "29");
-		
+	public void testcase1() throws IOException
+	{
+		Random ran = new Random();
+		Integer id = ran.nextInt();
+		Properties p = LoadProperties.properties("../AutomationProject/URI.properties");
 		HTTPMethods http = new HTTPMethods(p);
-		http.PostRequest("Employee_URI", obj.toString());
-
+		String body = LoadJsonPayload.LoadJson("../AutomationProject/src/test/java/org/testing/Payloads/EmployeeDetails.json");
+		body =JsonReplacement.JsonValueReplacement(body, "id", id.toString());
+		Response res =http.PostRequest("Employee_URI", body);
+		idValue =ParsingJsonUsingJsonPath.parseJson(res, "id");
+		System.out.println("Status of the request is: "+res.statusCode()+" and the id sent is: "+ idValue);
 	}
 
 }

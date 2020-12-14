@@ -10,10 +10,10 @@ import org.testing.utilities.LoadProperties;
 public class TC2_GetReq_testCases {
 	static String FilePath = "../AutomationProject/URI.properties";
 
-	public static void main(String[] args) throws IOException {
+	public void testcase1() throws IOException {
 		Properties p = LoadProperties.properties(FilePath);
 		HTTPMethods http = new HTTPMethods(p);
-		http.GetRequest("Employee_URI");
+		http.GetReqUsingOneParam("Employee_URI", TC1_PostReq_testCases.idValue);
 
 	}
 
