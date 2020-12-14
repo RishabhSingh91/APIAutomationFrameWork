@@ -7,7 +7,7 @@ import org.json.JSONObject;
 import org.testing.TestSteps.HTTPMethods;
 import org.testing.utilities.LoadProperties;
 
-public class TC1_GetReq_testCases {
+public class TC2_GetReq_testCases {
 	static String FilePath = "../AutomationProject/URI.properties";
 
 	public static void main(String[] args) throws IOException {
