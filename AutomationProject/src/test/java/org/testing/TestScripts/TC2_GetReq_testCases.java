@@ -4,8 +4,11 @@ import java.io.IOException;
 import java.util.Properties;
 
 import org.json.JSONObject;
+import org.testing.ResponseValidation.ResponseValidate;
 import org.testing.TestSteps.HTTPMethods;
 import org.testing.utilities.LoadProperties;
+
+import com.jayway.restassured.response.Response;
 
 public class TC2_GetReq_testCases {
 	static String FilePath = "../AutomationProject/URI.properties";
@@ -13,8 +16,10 @@ public class TC2_GetReq_testCases {
 	public void testcase1() throws IOException {
 		Properties p = LoadProperties.properties(FilePath);
 		HTTPMethods http = new HTTPMethods(p);
-		http.GetReqUsingOneParam("Employee_URI", TC1_PostReq_testCases.idValue);
-
+		Response res =http.GetReqUsingOneParam("Address_URI", "1555506993");
+	
+		ResponseValidate.statusCodeValidate(200, res);
+		ResponseValidate.dataValidate("1555506993", res, "id");
 	}
 
 }

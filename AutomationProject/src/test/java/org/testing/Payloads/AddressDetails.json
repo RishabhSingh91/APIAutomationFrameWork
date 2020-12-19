@@ -1,0 +1,20 @@
+    {
+      "FirstName": "Rishabh",
+      "LastName": "Singh",
+      "Dept": "IT",
+      "id": "{{id}}",
+        "AddressDetails": [
+    {
+      "addressLine1": {
+        "societyName": "SainikColony",
+        "housenum": "1212",
+        "sector": "F",
+        "city": "Jammu",
+        "postCode": "180001"
+      },
+      "addressLine2":{ }
+    }
+  ],
+      "Age": "29",
+      "Designation":"TL"
+    }

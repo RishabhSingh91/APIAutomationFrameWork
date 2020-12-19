@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.Random;
 
+import org.testing.ResponseValidation.ResponseValidate;
 import org.testing.TestSteps.HTTPMethods;
 import org.testing.utilities.JsonReplacement;
 import org.testing.utilities.LoadJsonPayload;
@@ -23,11 +24,14 @@ public class TC1_PostReq_testCases {
 		Integer id = ran.nextInt();
 		Properties p = LoadProperties.properties("../AutomationProject/URI.properties");
 		HTTPMethods http = new HTTPMethods(p);
-		String body = LoadJsonPayload.LoadJson("../AutomationProject/src/test/java/org/testing/Payloads/EmployeeDetails.json");
+		String body = LoadJsonPayload.LoadJson("../AutomationProject/src/test/java/org/testing/Payloads/AddressDetails.json");
 		body =JsonReplacement.JsonValueReplacement(body, "id", id.toString());
-		Response res =http.PostRequest("Employee_URI", body);
+		Response res =http.PostRequest("Address_URI", body);
 		idValue =ParsingJsonUsingJsonPath.parseJson(res, "id");
 		System.out.println("Status of the request is: "+res.statusCode()+" and the id sent is: "+ idValue);
+		
+		ResponseValidate.statusCodeValidate(201, res);
+		ResponseValidate.dataValidate(idValue, res, "id");
 	}
 
 }
