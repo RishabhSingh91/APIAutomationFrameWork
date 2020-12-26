@@ -30,9 +30,30 @@ public class HTTPMethods {
 		return res;
 	}
 	
+	public Response PutReq(String uriKey,String body,String param)
+	{
+		String URI = pr.getProperty(uriKey)+"/"+param;
+		Response res = given().contentType(ContentType.JSON).when().body(body).put(URI);
+		return res;
+	}
+	
+	public Response PatchReq(String URI,String UpValue,String param)
+	{
+		String uriKey = pr.getProperty(URI)+"/"+param;
+		Response res = given().contentType(ContentType.JSON).body(UpValue).when().patch(uriKey);
+		return res;
+	}
+	
 	public Response PostRequest(String URI, String body)
 	{
 		Response res = given().contentType(ContentType.JSON).when().body(body).post(pr.getProperty(URI));
+		return res;
+	}
+	
+	public Response DeleteReq(String URI, String param)
+	{
+		String uriKey = pr.getProperty(URI)+"/"+param;
+		Response res = given().contentType(ContentType.JSON).when().delete(uriKey);
 		return res;
 	}
 

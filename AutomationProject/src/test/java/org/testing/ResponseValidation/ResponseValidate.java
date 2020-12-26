@@ -19,7 +19,7 @@ public class ResponseValidate {
 	
 	public static void dataValidate(String expectedData, Response res, String jsonPath)
 	{
-		if(expectedData.equals(ParsingJsonUsingJsonPath.parseJson(res, jsonPath)))
+		if(expectedData.equalsIgnoreCase(ParsingJsonUsingJsonPath.parseJson(res, jsonPath)))
 		{
 			System.out.println("The provided data matches");
 		}

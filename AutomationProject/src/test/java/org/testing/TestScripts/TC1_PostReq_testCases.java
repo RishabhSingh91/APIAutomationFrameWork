@@ -24,14 +24,15 @@ public class TC1_PostReq_testCases {
 		Integer id = ran.nextInt();
 		Properties p = LoadProperties.properties("../AutomationProject/URI.properties");
 		HTTPMethods http = new HTTPMethods(p);
-		String body = LoadJsonPayload.LoadJson("../AutomationProject/src/test/java/org/testing/Payloads/AddressDetails.json");
+		String body = LoadJsonPayload.LoadJson("../AutomationProject/src/test/java/org/testing/Payloads/EmployeeDetails.json");
 		body =JsonReplacement.JsonValueReplacement(body, "id", id.toString());
-		Response res =http.PostRequest("Address_URI", body);
+		Response res =http.PostRequest("Employee_URI", body);
 		idValue =ParsingJsonUsingJsonPath.parseJson(res, "id");
 		System.out.println("Status of the request is: "+res.statusCode()+" and the id sent is: "+ idValue);
 		
 		ResponseValidate.statusCodeValidate(201, res);
 		ResponseValidate.dataValidate(idValue, res, "id");
+		System.out.println("Created data is: "+ res.asString());
 	}
 
 }
