@@ -7,11 +7,13 @@ import org.json.JSONObject;
 import org.testing.ResponseValidation.ResponseValidate;
 import org.testing.TestSteps.HTTPMethods;
 import org.testing.utilities.LoadProperties;
+import org.testng.annotations.Test;
 
 import com.jayway.restassured.response.Response;
 
 public class TC6_Patch_Request {
 	
+	@Test
 	public void TC6_FnameUp() throws IOException {
 	JSONObject obj = new JSONObject();
 	obj.put("FirstName", "Anirudh");

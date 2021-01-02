@@ -10,6 +10,7 @@ import org.testing.utilities.JsonReplacement;
 import org.testing.utilities.LoadJsonPayload;
 import org.testing.utilities.LoadProperties;
 import org.testing.utilities.ParsingJsonUsingJsonPath;
+import org.testng.annotations.Test;
 
 import com.jayway.restassured.response.Response;
 
@@ -17,7 +18,8 @@ import com.jayway.restassured.response.Response;
 public class TC1_PostReq_testCases {
 	
 	static String idValue;
-
+	
+	@Test
 	public void testcase1() throws IOException
 	{
 		Random ran = new Random();

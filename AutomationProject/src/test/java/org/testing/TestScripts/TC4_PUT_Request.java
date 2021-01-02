@@ -7,11 +7,13 @@ import org.json.simple.JSONObject;
 import org.testing.ResponseValidation.ResponseValidate;
 import org.testing.TestSteps.HTTPMethods;
 import org.testing.utilities.LoadProperties;
+import org.testng.annotations.Test;
 
 import com.jayway.restassured.response.Response;
 
 public class TC4_PUT_Request {
 	
+	 @Test
 	 public void tc4() throws IOException
 	 {
 		 String id;
