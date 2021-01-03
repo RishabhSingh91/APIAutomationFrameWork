@@ -18,8 +18,7 @@ import jxl.write.biff.RowsExceededException;
 public class Trigger {
 
 	public static void main(String[] args) throws IOException, BiffException, RowsExceededException, WriteException {
-		Trigger obj = new Trigger();
-		obj.ExcelRead();
+		
 /*		TC3_Get_Request_AllData tc3 = new TC3_Get_Request_AllData(); 
 		TC1_PostReq_testCases tc1 = new TC1_PostReq_testCases();
 		tc1.testcase1();
@@ -36,6 +35,8 @@ public class Trigger {
 		tc6.TC6_FnameUp();
 		ResponseParsingUsingOrgJson ob = new ResponseParsingUsingOrgJson();
 		ob.LoadResponse("../AutomationProject/src/test/java/org/testing/Payloads/dummy.json", "number");*/
+		TC1_PostReq_testCases tc1 = new TC1_PostReq_testCases();
+		tc1.testcase1();
 		
 	}
 	public void ExcelRead() throws BiffException, IOException, RowsExceededException, WriteException
