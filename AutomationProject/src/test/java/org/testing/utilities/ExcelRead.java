@@ -10,9 +10,9 @@ import jxl.read.biff.BiffException;
 
 public class ExcelRead {
 	
-	public static String Read(String FilePath, int sheet, int row, int col) throws BiffException, IOException
+	public static String Read(int sheet, int row, int col) throws BiffException, IOException
 	{
-		File f = new File(FilePath);
+		File f = new File("C:\\Users\\jamwa\\eclipse-workspace\\APIAutomationFrameWork\\AutomationProject\\TestCaseFinal.xls");
 		Workbook wb = Workbook.getWorkbook(f);
 		Sheet s = wb.getSheet(sheet);
 		String data = s.getCell(col,row).getContents();
